@@ -1,0 +1,19 @@
+server:
+  port: 8000
+
+kafka:
+  bootstrapServers: localhost:9092
+  consumer:
+    subscriptions:
+      - name: subscription-to-my-topic
+        topic: my-topic
+        ackDeadlineSeconds: 10
+    properties:
+      max.poll.records: 2000
+  producer:
+    topics:
+      - my-topic
+    properties:
+      linger.ms: 5
+      batch.size: 1000000
+      buffer.memory: 32000000
